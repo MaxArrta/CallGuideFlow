@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Assistant Document</title>
+    <style>
+
+        body {
+            background-color: #000;
+            color: #00FF00;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 20px;
+            padding: 20px;
+        }
+        .panel {
+            display: none;
+            padding: 10px;
+            background-color: #333;
+            border: 1px solid #00FF00;
+            margin-top: 5px;
+        }
+        button {
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            background-color: #000;
+            color: #00FF00;
+            font-size: 16px;
+            transition: background-color 0.4s;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #00FF00;
+            color: #000;
+        }
+        .disabled {
+            color: gray;
+        }
+        textarea {
+            width: 400px;
+	    height:120px;
+            padding: 5px;
+            border: 1px solid #00FF00;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #000;
+            color: #00FF00;
+	    font-size: 18px; /* Aumenta el tamaño del texto */
+        }
+        h2 {
+            color: #00FF00;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function togglePanel(id) {
+            var panel = document.getElementById(id);
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+        function toggleLine(checkbox, lineId) {
+            var line = document.getElementById(lineId);
+            if (checkbox.checked) {
+                line.classList.add('disabled');
+            } else {
+                line.classList.remove('disabled');
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- <h1>Linchris Callflow</h1>-->
+    
+    <!-- Notes Area 
+    <h2>Notes</h2>-->
+    <textarea rows="15" placeholder="Add your notes here..."></textarea>
+    
+    <h2>Opening</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'opening1')"> <span id="opening1">Thank you for calling _____, my name is _____. </span><br> 
+    <input type="checkbox" onclick="toggleLine(this, 'opening2')"> <span id="opening2">May I have your full name, please?</span><br>
+    <input type="checkbox" onclick="toggleLine(this, 'opening3')"> <span id="opening3">How Can I help you Mr/Ms?</span></p>
+    
+    <h2>Assurance Phrase</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'assurance1')"> <span id="assurance1">Sure, I'll be more than glad to assist you...</span></p>
+
+    <h2>Match Date and Day</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'matchDate1')"> <span id="matchDate1">The reservation would be on (Day and Date), Departuring on...(Day and Date)</span></p>
+
+    <h2>Proving Questions</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'proving1')"> <span id="proving1">* What brings you to the area?</span><br>  
+    <input type="checkbox" onclick="toggleLine(this, 'proving2')"> <span id="proving2">* Have you stayed with us before?</span><br>
+    <h5>If answer is yes:</h5><i><input type="checkbox" onclick="toggleLine(this, 'proving3')"> <span id="proving3">-We are glad to have you back</span></i><br>
+    <h5>If answer is no:</h5> <i><input type="checkbox" onclick="toggleLine(this, 'proving4')"> <span id="proving4">-We are sure you are going to enjoy your stay</span></i><br>
+    <input type="checkbox" onclick="toggleLine(this, 'proving5')"> <span id="proving5">* Are you attending any event by any chance?</span></p>
+
+    <h2>Mention 4 Property Amenities</h2>
+    <p>While I am retrieving your rates, I would like to inform you about the amenities we offer.</p>
+
+    <div>
+        <button onclick="togglePanel('allegria')">Allegria</button>
+        <div id="allegria" class="panel">
+            <p>Rooftop Outdoor Pool<br>High speed Internet<br>Fitness Center<br>Salon</p>
+        </div>
+
+        <button onclick="togglePanel('anchorIn')">Anchor In</button>
+        <div id="anchorIn" class="panel">
+            <p>Seasonal Outdoor Pool<br>High speed Internet<br>Fire Pits<br>Sun Terrace/Sun Deck</p>
+        </div>
+
+        <button onclick="togglePanel('ashworth')">Ashworth</button>
+        <div id="ashworth" class="panel">
+            <p>Indoor, Heated pool<br>High-Speed Internet<br>Bike Rentals<br>Seasonal Rooftop Bar</p>
+        </div>
+
+        <button onclick="togglePanel('beachRetreat')">Beach Retreat</button>
+        <div id="beachRetreat" class="panel">
+            <p>Outdoor pool<br>High speed Internet<br>Beach access<br>Fire pits and S'mores Kits</p>
+        </div>
+
+        <button onclick="togglePanel('brassKey')">Brass Key</button>
+        <div id="brassKey" class="panel">
+            <p>Infinity, Heated Outdoor Pool<br>Hot tub<br>High-Speed Internet<br>Complimentary poolside refreshments</p>
+        </div>
+
+        <button onclick="togglePanel('crownePointe')">Crowne Pointe</button>
+        <div id="crownePointe" class="panel">
+            <p>Outdoor Pool<br>Hot Tub<br>High-Speed Internet<br>Spa</p>
+        </div>
+
+        <button onclick="togglePanel('harborHotel')">Harbor Hotel</button>
+        <div id="harborHotel" class="panel">
+            <p>Seasonal Outdoor Pool<br>High-Speed Internet<br>Outdoor Patio & Fire Pit (Seasonal)<br>Electric Vehicle Charging Stations</p>
+        </div>
+
+        <button onclick="togglePanel('hotel1620')">Hotel 1620</button>
+        <div id="hotel1620" class="panel">
+            <p>Indoor Pool<br>Hot tub<br>High-Speed Internet<br>Splash Pad</p>
+        </div>
+
+        <button onclick="togglePanel('hotelTybee')">Hotel Tybee</button>
+        <div id="hotelTybee" class="panel">
+            <p>2 Outdoor Pools<br>High-Speed Internet<br>BBQ grills<br>Beach access</p>
+        </div>
+
+        <button onclick="togglePanel('innMiddletown')">Inn @ Middletown</button>
+        <div id="innMiddletown" class="panel">
+            <p>Indoor, Heated Pool<br>Hot tub<br>High-Speed Internet<br>Fitness Center</p>
+        </div>
+
+        <button onclick="togglePanel('pleasantViewInn')">Pleasant View Inn</button>
+        <div id="pleasantViewInn" class="panel">
+            <p>Outdoor Pool<br>Private Beach<br>Signature PV Cocktail<br>Game Room</p>
+        </div>
+
+        <button onclick="togglePanel('provincetownInn')">Provincetown Inn</button>
+        <div id="provincetownInn" class="panel">
+            <p>Largest outdoor, waterfront public pool<br>High-Speed Internet<br>Private beach<br>Waterfront rooms</p>
+        </div>
+
+        <button onclick="togglePanel('surfside')">Surfside</button>
+        <div id="surfside" class="panel">
+            <p>Heated Outdoor Pool<br>High-Speed Internet<br>Private beach<br>Firepit</p>
+        </div>
+    </div>
+
+    <h2>Ask For The Sale</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'assurance1')"> <span id="assurance1">Can I go ahead and book this for you?</span></p>
+
+    <p><input type="checkbox" onclick="toggleLine(this, 'assurance1')"> <span id="assurance1">I can complete the reservation whenever you're ready just let me know.</span></p>
+
+<h2>Overcoming Objections</h2>
+    <ul><li> <b>Price:</b> <i>I just would like to remind you that there rates are subject to availability, therefore I cannot guarantee the same rate on a later time. If you want, we can check for another date to look for a better rate that works for you.</i></li><br><br>
+
+<li><b>Think about it:</b> <i>We are running out of availability at the moment, if you want we can go ahead and book it right now, and if somehow it does not work for you, remember that if you need to cancel you can do it (time -days) prior to check in.</i></li><br><br> 
+
+<li><b>Think About it (within cancellation time permitted):</b> <i>We are running out of availability at the moment, I just would like to remind you that these rates are subject to availability, therefore I cannot guarantee the same rate on a later time.</i></li> <br><br>
+
+<li><b>Lower rate on a 3d Party:</b> <i>I understand, however keep in mind that if something comes on, you will be subject to their T&C, if you decide to go through us, we will be more than capable to assist you if something happens.</i></li> </span></ul>
+
+<h2>Additional Assistance</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'assurance1')"> <span id="assurance1">Is there anything else I can help you with?...</span></p>
+
+    <h2>Closing</h2>
+    <p><input type="checkbox" onclick="toggleLine(this, 'closing1')"> <span id="closing1">Thank you for calling (Hotel Name), remember that you spoke with (Agent Name), have a great day. </span></p>
+
+
+
+</body>
+
+</html>
